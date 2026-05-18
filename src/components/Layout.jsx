@@ -12,7 +12,9 @@ import {
   LayoutDashboard,
   Bell,
   AlertTriangle,
-  UserCircle
+  UserCircle,
+  Menu,
+  X
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { useNotifications } from '../context/NotificationContext';
@@ -22,6 +24,7 @@ const Layout = ({ children }) => {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
   const { notifCount } = useNotifications();
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const handleLogout = () => {
     logout();
@@ -54,11 +57,23 @@ const Layout = ({ children }) => {
   }
 
   return (
-    <div className="layout">
-      <aside className="sidebar">
+    <div className={`layout ${sidebarOpen ? 'sidebar-active' : ''}`}>
+      {/* Backdrop overlay for mobile screen when sidebar is active */}
+      {sidebarOpen && (
+        <div className="sidebar-overlay" onClick={() => setSidebarOpen(false)}></div>
+      )}
+      
+      <aside className={`sidebar ${sidebarOpen ? 'open' : ''}`}>
         <div className="sidebar-header">
-          <h1>Ranasinghe</h1>
-          <span>Motors</span>
+          <div className="brand-container">
+            <div>
+              <h1>Ranasinghe</h1>
+              <span>Motors</span>
+            </div>
+            <button className="sidebar-close-btn" onClick={() => setSidebarOpen(false)}>
+              <X size={20} />
+            </button>
+          </div>
         </div>
         <nav className="sidebar-nav">
           {navItems.map((item) => (
@@ -66,6 +81,7 @@ const Layout = ({ children }) => {
               key={item.name} 
               to={item.path} 
               className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}
+              onClick={() => setSidebarOpen(false)} // Close sidebar on nav item click on mobile
             >
               <item.icon size={20} />
               <span>{item.name}</span>
@@ -84,8 +100,13 @@ const Layout = ({ children }) => {
       </aside>
       <main className="main-content">
         <header className="top-header">
-          <div className="search-bar">
-            {/* Search logic here if needed */}
+          <div className="header-left">
+            <button className="menu-toggle-btn" onClick={() => setSidebarOpen(true)}>
+              <Menu size={20} />
+            </button>
+            <div className="search-bar">
+              {/* Search logic here if needed */}
+            </div>
           </div>
           <div className="header-actions">
             <button className="icon-btn" onClick={() => navigate('/low-stock')}>
