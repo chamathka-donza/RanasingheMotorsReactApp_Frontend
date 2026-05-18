@@ -1,0 +1,36 @@
+.management-page {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.header-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.btn-secondary {
+  background-color: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.btn-secondary:hover {
+  background-color: var(--background);
+}
+
+.action-btn {
+  padding: 0.5rem;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--text-muted);
+  transition: all 0.2s;
+}
+
+.action-btn:hover {
+  background-color: var(--background);
+  color: var(--primary);
+}
+
+.action-btn.delete:hover {
+  color: var(--danger);
+  background-color: #fee2e2;
+}

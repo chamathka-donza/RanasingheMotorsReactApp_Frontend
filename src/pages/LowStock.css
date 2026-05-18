@@ -1,0 +1,23 @@
+.status-alert {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--danger);
+  font-weight: 600;
+  font-size: 0.8125rem;
+}
+
+.empty-state {
+  padding: 4rem;
+  text-align: center;
+  color: var(--text-muted);
+}
+
+.low-stock-page .data-table tr:hover {
+  background-color: #fff1f2;
+}
+
+.qty-pill.qty-low {
+  background-color: #fee2e2;
+  color: #b91c1c;
+}
