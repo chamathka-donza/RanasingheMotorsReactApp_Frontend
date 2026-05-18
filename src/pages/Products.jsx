@@ -203,7 +203,7 @@ const Products = () => {
               <tr key={p._id} className={p.quantity <= p.orderQuantity ? 'low-stock' : ''}>
                 <td>
                   <div className="product-img">
-                    {p.image ? <img src={`http://localhost:5000${p.image}`} alt="" /> : <div className="placeholder" />}
+                    {p.image ? <img src={`${window.API_URL || 'http://localhost:5000'}${p.image}`} alt="" /> : <div className="placeholder" />}
                   </div>
                 </td>
                 <td><span className="badge-model">{p.modelNumber}</span></td>
