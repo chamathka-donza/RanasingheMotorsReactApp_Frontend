@@ -26,6 +26,14 @@ const Users = () => {
     supplier_add: false,
     supplier_update: false,
     supplier_delete: false,
+    import_view: false,
+    import_add: false,
+    import_update: false,
+    import_delete: false,
+    importSupplier_view: false,
+    importSupplier_add: false,
+    importSupplier_update: false,
+    importSupplier_delete: false,
   });
 
   useEffect(() => {

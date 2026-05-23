@@ -11,6 +11,7 @@ import Settings from './pages/Settings';
 import Users from './pages/Users';
 import LowStock from './pages/LowStock';
 import Profile from './pages/Profile';
+import Imports from './pages/Imports';
 
 const ProtectedRoute = ({ children }) => {
   const { user } = useAuth();
@@ -101,6 +102,12 @@ function App() {
           <Route path="/profile" element={
             <ProtectedRoute>
               <Profile />
+            </ProtectedRoute>
+          } />
+
+          <Route path="/imports" element={
+            <ProtectedRoute>
+              <Imports />
             </ProtectedRoute>
           } />
         </Routes>

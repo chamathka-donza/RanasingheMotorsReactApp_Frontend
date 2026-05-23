@@ -14,7 +14,8 @@ import {
   AlertTriangle,
   UserCircle,
   Menu,
-  X
+  X,
+  Ship
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { useNotifications } from '../context/NotificationContext';
@@ -45,6 +46,9 @@ const Layout = ({ children }) => {
   }
   if (isAdmin || user?.permissions?.brand_view) {
     navItems.push({ name: 'Brands', path: '/brands', icon: Tag });
+  }
+  if (isAdmin || user?.permissions?.import_view) {
+    navItems.push({ name: 'Imports', path: '/imports', icon: Ship });
   }
 
   navItems.push({ name: 'My Profile', path: '/profile', icon: UserCircle });
